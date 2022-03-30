@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './css/App.css';
-import Home from './components/Home';
-import Navbar from './components/NavBar';
-import About from './components/About';
-import Footer from './components/Footer';
-import Header from './components/Header';
+import Home from './components/Pages/Home';
+import Navbar from './components/Elements/NavBar';
+import About from './components/Pages/About';
+import Footer from './components/Elements/Footer';
+import Header from './components/Elements/Header';
+import ListingGallery from './components/Pages/ListingGallery';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path = "/" element= {<Home/>}/>
           <Route path = "/home" element= {<Home/>}/>
           <Route path = "/about" element= {<About/>}/>
+          <Route path = "/listing-gallery" element= {<ListingGallery/>}/>
         </Routes>
         <Footer/>
       </Router>

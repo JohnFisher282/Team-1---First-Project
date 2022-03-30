@@ -1,4 +1,4 @@
-import Logo from "../resources/logo.svg" 
+import Logo from "../../resources/logo.svg" 
 
 const HeaderLogo = () => {
     return ( 

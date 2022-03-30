@@ -6,6 +6,7 @@ import About from './components/Pages/About';
 import Footer from './components/Elements/Footer';
 import Header from './components/Elements/Header';
 import ListingGallery from './components/Pages/ListingGallery';
+import Search from './components/Pages/Search';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path = "/home" element= {<Home/>}/>
           <Route path = "/about" element= {<About/>}/>
           <Route path = "/listing-gallery" element= {<ListingGallery/>}/>
+          <Route path = "/search" element= {<Search/>}/>
         </Routes>
         <Footer/>
       </Router>

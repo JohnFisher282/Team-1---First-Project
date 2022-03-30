@@ -9,7 +9,6 @@ const Footer = () => {
             <Link to="/opening-times"> Opening Times </Link>
             <Link to="/emailform"> E-mail Form </Link>
             <Link to="/site-navigation"> Site Navigation </Link>
-            <Link to="/search"> Search </Link>
             
             
         </div>

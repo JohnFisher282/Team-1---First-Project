@@ -1,6 +1,6 @@
 const DiscussionBoard = () => {
     return ( 
-        <h2> Discussion Board</h2>
+        <h3> Discussion Board</h3>
      );
 }
  

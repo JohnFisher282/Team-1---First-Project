@@ -29,27 +29,6 @@ const Search = () => {
         }) 
     }
 
-    // const deleteData = () => {
-    //     axios.delete(`http://www.omdbapi.com/?i=tt3896198&apikey=86e6f97c/${id}`)
-    //     .then(() => {
-    //         console.log(" Deleted");
-    //     });
-    // }
-
-    // const postData = () => {
-    //     axios.post(`http://www.omdbapi.com/?i=tt3896198&apikey=86e6f97c/`, search) 
-    //     .then((response) => {
-    //         console.log(response);
-    //     })
-    // }
-
-    // const putData = () => {
-    //     axios.put(`https://www.omdbapi.com/?i=tt3896198&apikey=86e6f97c/${id}`, search) 
-    //     .then((response) => {
-    //         console.log(response);
-    //     })
-    // }
-
     return ( 
         <>
             <h5>Get</h5>

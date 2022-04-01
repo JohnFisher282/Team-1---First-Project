@@ -7,6 +7,17 @@ import Footer from './components/Elements/Footer';
 import Header from './components/Elements/Header';
 import ListingGallery from './components/Pages/ListingGallery';
 import Search from './components/Pages/Search';
+import GettingThere from './components/Pages/GettingThere';
+import PlacesToGo from './components/Pages/PlacesToGo';
+import OpeningTime from './components/Pages/OpeningTime';
+import EmailFormPage from './components/Pages/EmailFormPage';
+import Screens from './components/Pages/Screens';
+import SiteNavigation from './components/Pages/SiteNavigation';
+import Classification from './components/Pages/Classification';
+import DiscussionBoard from './components/Pages/DiscussionBoard';
+import TicketBooking from './components/Pages/TicketBooking';
+import Payment from './components/Pages/Payment';
+import NewReleaseGallery from './components/Pages/NewReleaseGallery'
 
 
 function App() {
@@ -22,6 +33,18 @@ function App() {
           <Route path = "/about" element= {<About/>}/>
           <Route path = "/listing-gallery" element= {<ListingGallery/>}/>
           <Route path = "/search" element= {<Search/>}/>
+          <Route path = "/getting-there" element= {<GettingThere/>}/>
+          <Route path = "/places-to-go" element= {<PlacesToGo/>}/>
+          <Route path = "/opening-times" element= {<OpeningTime/>}/>
+          <Route path = "/screens" element= {<Screens/>}/>
+          <Route path = "/emailform" element= {<EmailFormPage/>}/>
+          <Route path = "/site-navigation" element= {<SiteNavigation/>}/>
+          <Route path = "/classification" element= {<Classification/>}/>
+          <Route path = "/discussion-board" element= {<DiscussionBoard/>}/>
+          <Route path = "/ticket-booking" element= {<TicketBooking/>}/>
+          <Route path = "/payment" element= {<Payment/>}/>
+          <Route path = "/newreleasegallery" element= {<NewReleaseGallery/>}/>
+          
         </Routes>
         <Footer/>
       </Router>

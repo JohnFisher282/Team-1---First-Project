@@ -16,7 +16,6 @@ describe("Test Listings", () => {
     Listings.deleteMany((err) => {
       if (!err) {
         Listings.create(
-          [
             {
               title: "Arrival",
               year: 2016,
@@ -30,20 +29,6 @@ describe("Test Listings", () => {
               rating: 8,
               showingTimes: ["15:00", "19:30", "20:00"],
             },
-            {
-              title: "Road to El Dorado",
-              year: 2000,
-              rated: "U",
-              genre: ["Animation", "Adventure", "Comedy", "Family"],
-              director: "Bibo Bergeron, Don Paul, Jeffrey Katzenberg",
-              actors: ["Kevin Kline", "Kenneth Branagh", "Rosie Perez"],
-              plot: "Two swindlers get their hands on a map to the fabled city of gold, El Dorado, while pulling off some sort of scam. Their plan goes bad and the rogues end up lost at sea after a number of misfortunes.",
-              poster:
-                "https://m.media-amazon.com/images/M/MV5BOTEzNWIwMzctOTE1YS00YjIyLTgwZGEtMTMxZDAzNzlmODMxXkEyXkFqcGdeQXVyMjgyMDk1MzY@._V1_FMjpg_UX1000_.jpg",
-              rating: 7,
-              showingTimes: ["12:00", "14:30", "17:30"],
-            },
-          ],
           (error, created) => {
             if (!error) {
               testListings = created;
@@ -82,6 +67,7 @@ describe("Test Listings", () => {
     chai
       .request(server)
       .put(`/listings/update/${testListings.id}`)
+      .set('content-type', 'application/json')
       .send({
         title: "The Lion King",
         year: 1994,
@@ -112,11 +98,22 @@ describe("Test Listings", () => {
         expect(res).to.have.status(400);
         expect(res).to.haveOwnProperty(
           "text",
-          "Listings validation failed:..."
+          "Listings validation failed: rating: Path `rating` is required., poster: Path `poster` is required., plot: Path `plot` is required., director: Path `director` is required., rated: Path `rated` is required., year: Path `year` is required., title: Path `title` is required."
         );
         return done();
       });
   });
+
+  it("Should delete a Listing", (done) => {
+      chai
+        .request(server)
+        .delete(`/listings/delete/${testListings.id}`)
+        .end((err, res) => {
+          expect(err).to.be.null;
+          expect(res).to.have.status(204);
+          return done();
+        })
+    });
 
   it("Should find a Listing", (done) => {
     chai
@@ -125,35 +122,32 @@ describe("Test Listings", () => {
       .end((err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
-        expect(res.body).to.haveOwnProperty("title", "Blade");
-        expect(res.body).to.haveOwnProperty("director", "Stephen Norrington");
-        expect(res.body).to.haveOwnProperty("certificate", 18);
-        //etc.
-      });
-  });
-
-  it("Should delete a Listing", (done) => {
-    chai
-      .request(server)
-      .delete("/listings/delete")
-      .send((err, res) => {
-        expect(err).to.be.null;
-        expect(res).to.have.status(204);
+        expect(res.body).to.haveOwnProperty("title", "Arrival");
+        expect(res.body).to.haveOwnProperty("year", 2016);
+        expect(res.body.genre).to.eql(["Sci-fi", "Thriller"]);
+        expect(res.body).to.haveOwnProperty("director", "Denis Villeneuve");
+        expect(res.body.actors).to.eql(["Amy Adams", "Jeremy Renner", "Forest Whitaker"]);
+        expect(res.body).to.haveOwnProperty("plot", "Louise Banks, a linguistics expert, along with her team, must interpret the language of aliens who have come to Earth in a mysterious spaceship.");
+        expect(res.body).to.haveOwnProperty("poster",
+          "https://m.media-amazon.com/images/M/MV5BMTExMzU0ODcxNDheQTJeQWpwZ15BbWU4MDE1OTI4MzAy._V1_SX300.jpg");
+        expect(res.body).to.haveOwnProperty("rating", 8);
+        expect(res.body.showingTimes).to.eql(["15:00", "19:30", "20:00"]);
         return done();
       });
   });
 
-  it("Should get all Listings"),
-    (done) => {
+  
+
+  it("Should get all Listings", (done) => {
       chai
         .request(server)
         .get("/listings/getAll")
         .end((err, res) => {
           expect(err).to.be.null;
           expect(res).to.have.status(200);
-          expect(res.body).should.be.a("array");
-          expect(res.length).should.be.eql(3);
-          done();
+          expect(res.body).to.be.an("array");
+          expect(res.body.length).to.equal(1);
+          return done();
         });
-    };
+    });
 });

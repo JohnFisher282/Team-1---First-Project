@@ -15,27 +15,14 @@ describe ("Test Bookings", () => {
     beforeEach((done) => {
         Bookings.deleteMany((err) => {
         if (!err) {
-            Bookings.create(
-            [
+            Bookings.create(            
                 {
-                title: "John",
+                name: "John",
                 movieTitle: "Blade",
                 seats: 2,
                 ticketType: "Child",
                 },
-                {
-                    title: "Euan",
-                    movieTitle: "Wallace & Gromit: The Curse of the Were-Rabbit",
-                    seats: 8,
-                    ticketType: "Concession",
-                    },
-                    {
-                        title: "Vaisala",
-                        movieTitle: "Mr. Bean's Holiday",
-                        seats: 2,
-                        ticketType: "Adult",
-                        },
-            ], (error, created) => {
+            (error, created) => {
                 if (!error) {
                     testBookings = created;
                 }
@@ -58,7 +45,11 @@ describe ("Test Bookings", () => {
         });
     });
     it ("Should update an existing Booking", (done) => {
-        chai.request(server).put(`/bookings/update/${testBookings.id}`).send({
+      chai
+        .request(server)
+        .put(`/bookings/update/${testBookings.id}`)
+        .set('content-type', 'application/json')
+        .send({
             name: "Asad",
             movieTitle: "Batman",
             seats: 4,
@@ -74,7 +65,7 @@ describe ("Test Bookings", () => {
         chai.request(server).post("/bookings/create").send().end((err, res) => {
             expect(err).to.be.null;
             expect(res).to.have.status(400);
-            expect(res).to.haveOwnProperty("text", "Bookings validation failed:...");
+            expect(res).to.haveOwnProperty("text", "Bookings validation failed: ticketType: Path `ticketType` is required., seats: Path `seats` is required., movieTitle: Path `movieTitle` is required., name: Path `name` is required.");
             return done();
         });
     });
@@ -86,26 +77,32 @@ describe ("Test Bookings", () => {
             expect(res.body).to.haveOwnProperty('name', 'John');
             expect(res.body).to.haveOwnProperty('movieTitle', 'Blade');
             expect(res.body).to.haveOwnProperty('seats', 2);
-            expect(res.body).to.haveOwnProperty('ticketType', 'Adult');
-            //etc.
-        });
-    });
-
-    it ("Should delete a Booking", (done) => {
-        chai.request(server).delete("/bookings/delete").send((err, res) => {
-            expect(err).to.be.null;
-            expect(res).to.have.status(204);
+            expect(res.body).to.haveOwnProperty('ticketType', 'Child');
             return done();
         });
     });
 
-    it ("Should get all Bookings"), (done) => {
-        chai.request(server).get("/bookings/getAll").end((err, res) => {
+    it("Should delete a Booking", (done) => {
+        chai
+          .request(server)
+          .delete(`/bookings/delete/${testBookings.id}`)
+          .end((err, res) => {
+            expect(err).to.be.null;
+            expect(res).to.have.status(204);
+            return done();
+          })
+      });
+
+    it ("Should get all Bookings", (done) => {
+        chai
+        .request(server)
+        .get("/bookings/getAll")
+        .end((err, res) => {
             expect(err).to.be.null;
             expect(res).to.have.status(200)
-            expect(res.body).should.be.a('array');
-            expect(res.length).should.be.eql(3);
-            done();
+            expect(res.body).to.be.an("array");
+            expect(res.body.length).to.equal(1);
+            return done();
         });
-    }
+    })
 });

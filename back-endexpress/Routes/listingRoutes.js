@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const Listings = require("/testData/listingsDb");
+const Listings = require("../testData/listingsDb");
 
 router.get("/getAll", (req, res, next) => {
     Listings.find((err, listings) => {
@@ -11,8 +11,8 @@ router.get("/getAll", (req, res, next) => {
     })
 });
 
-router.get("/get", ({query}, res, next) => {
-    Listings.find(query, (err, listings) => {
+router.get("/get/:id", ({params: {id}}, res, next) => {
+    Listings.findById(id, (err, listings) => {
         if (err)
         return next({status: 400, message: err.message});
     else
@@ -23,12 +23,12 @@ router.get("/get", ({query}, res, next) => {
 router.post("/create", ({body: listings}, res, next) => {
 
     new Listings(listings).save()
-    .then(() => res.status(201).send("Created"))
+    .then(() => res.status(201).send("Created Successfully"))
     .catch(err => next ({status: 400, message: err.message}));
 });
     
 
-router.put("/update/:id", ({query: newListings, params: {id}}, res) => {
+router.put("/update/:id", ({body: {newListings}, params: {id}}, res, next) => {
 
     Listings.findByIdAndUpdate(id, newListings, (err, replaced) => {
         if (err)
@@ -38,18 +38,18 @@ router.put("/update/:id", ({query: newListings, params: {id}}, res) => {
                 if (err)
                     return next({status: 400, message: err.message});
                 else
-                    return res.status(202).send(updatedListings);
+                    return res.status(202).send("Updated Successfully");
             });
     })
 });
 
-router.delete("/delete/:id", ({params: {id}}, res) => {
+router.delete("/delete/:id", ({params: {id}}, res, next) => {
     
-    Listings.findByIdAndDelete(id, (err) => {
+    Listings.findByIdAndRemove(id, (err) => {
         if (err)
             return next({status: 400, message: err.message});
         else
-            return res.sendStatus(204);
+            return res.status(204).send("Deleted");
     })
 });
 

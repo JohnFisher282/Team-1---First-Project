@@ -4,9 +4,9 @@ const connectionParams = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 };
-const uri = `mongodb+srv://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSWORD}@cluster0.57i19.mongodb.net/cinema?retryWrites=true&w=majority`;
+
 const connection = mongoose
-  .connect(uri, connectionParams)
+  .connect(process.env.MONGO_URI, connectionParams)
   .then(() => {
     console.log("Connected to database");
   })

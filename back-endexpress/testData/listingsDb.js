@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-mongoose.connect("mongodb://localhost:27017/listings", {
-  useNewUrlParser: true,
-});
+// mongoose.connect("mongodb://localhost:27017/listings", {
+//   useNewUrlParser: true,
+// });
 
 const listingSchema = new Schema({
   title: {

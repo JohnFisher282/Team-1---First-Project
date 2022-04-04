@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha tests --exit -R nyan",
     "coverage": "nyc npm test",
-    "start": "nodemon app.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",

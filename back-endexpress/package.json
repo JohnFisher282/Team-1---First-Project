@@ -4,7 +4,9 @@
   "description": "back-end",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests --exit -R nyan",
+    "coverage": "nyc npm test",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,13 @@
     "body-parser": "^1.19.2",
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mocha": "^9.2.2",
-    "mongoose": "^6.2.8",
+    "mongoose": "^6.2.9",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
     "nyc": "^15.1.0"
   }
 }

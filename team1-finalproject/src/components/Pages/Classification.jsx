@@ -1,6 +1,6 @@
 const Classification = () => {
     return ( 
-        <h2> Classification </h2>
+        <h3> Classification </h3>
      );
 }
  

@@ -4,7 +4,7 @@ const ListingGallery = () => {
         <>
         <h3> Listing Gallery </h3>
 
-        <img src= "https://www.imdb.com/title/tt1877830/mediaviewer/rm2474894849/?ref_=tt_ov_i" alt="batman" width="300px" />
+        <img src= "https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_FMjpg_UY711_.jpg" alt="batman" width="300px" />
         </>
         
 

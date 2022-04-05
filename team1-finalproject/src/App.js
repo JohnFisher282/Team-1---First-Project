@@ -18,6 +18,7 @@ import DiscussionBoard from './components/Pages/DiscussionBoard';
 import TicketBooking from './components/Pages/TicketBooking';
 import Payment from './components/Pages/Payment';
 import NewReleaseGallery from './components/Pages/NewReleaseGallery'
+import ContactPage from './components/Pages/ContactPage';
 
 
 function App() {
@@ -44,7 +45,7 @@ function App() {
           <Route path = "/ticket-booking" element= {<TicketBooking/>}/>
           <Route path = "/payment" element= {<Payment/>}/>
           <Route path = "/newreleasegallery" element= {<NewReleaseGallery/>}/>
-          
+          <Route path = "/contactpage" element= {<ContactPage/>}/>
         </Routes>
         <Footer/>
       </Router>

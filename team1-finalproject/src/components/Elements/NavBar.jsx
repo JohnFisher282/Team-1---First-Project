@@ -44,10 +44,10 @@ const Navbar = () => {
             <Link to="/site-navigation"> Site Navigation </Link>
             <Link to="/classification"> Classification </Link>
             <Link to="/discussion-board"> Discussion Board </Link>
-            <Link to="/ticket-booking"> Ticket Booking </Link>
             <Link to="/screens"> Screens </Link>
             <Link to="/newreleasegallery"> New Release Gallery </Link>
-            <Link to="/payment"> Payment </Link>
+            <Link to="/contactpage"> Contact Page </Link>
+            
 
             <h5>Search</h5>
 

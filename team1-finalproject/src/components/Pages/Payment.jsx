@@ -1,14 +1,27 @@
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { PayPalButtons } from '@paypal/react-paypal-js';
+import OtherPaypal from './OtherPaypal';
+import { useState } from 'react';
+import Paypal from './Paypal';
 
 const Payment = () => {
+
+    const [checkout, setCheckOut] = useState(false);
+
     return (
         <>
             <h3> Payment </h3>
-            <PayPalScriptProvider options={{ "client-id": "test" }}>
-                <PayPalButtons style={{ layout: "horizontal" }} />
-            </PayPalScriptProvider>
-
+            {checkout ? (
+                <Paypal />
+            ) : (
+                <button
+                    onClick={() => {
+                        setCheckOut(true);
+                    }}
+                >
+                    Checkout
+                </button>
+            )}
         </>
     );
 }

@@ -19,6 +19,7 @@ import TicketBooking from './components/Pages/TicketBooking';
 import Payment from './components/Pages/Payment';
 import NewReleaseGallery from './components/Pages/NewReleaseGallery'
 import ContactPage from './components/Pages/ContactPage';
+import OtherPaypal from './components/Pages/OtherPaypal';
 
 
 function App() {

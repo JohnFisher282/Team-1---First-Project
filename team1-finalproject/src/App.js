@@ -23,6 +23,10 @@ import DoctorStrange from './components/Pages/DoctorStrange';
 import Minions from './components/Pages/Minions';
 import OperationMincemeat from './components/Pages/OperationMincemeat';
 import SuperPets from './components/Pages/SuperPets';
+import Batman from "./components/Pages/Batman"
+import Spiderman from "./components/Pages/Spiderman"
+import Uncharted from "./components/Pages/Uncharted"
+import Sonic from "./components/Pages/Sonic"
 
 
 function App() {
@@ -54,6 +58,10 @@ function App() {
           <Route path="/newreleasegallery/minions-the-rise-of-gru" element= {<Minions/>}/>
           <Route path="/newreleasegallery/operation-mincemeat" element= {<OperationMincemeat/>}/>
           <Route path="/newreleasegallery/dc-league-of-super-pets" element= {<SuperPets/>}/>
+          <Route path="/listing-gallery/batman" element= {<Batman/>}/>
+          <Route path="/listing-gallery/spider-man-no-way-home" element= {<Spiderman/>}/>
+          <Route path="/listing-gallery/uncharted" element= {<Uncharted/>}/>
+          <Route path="/listing-gallery/sonic-the-hedgehog-2" element= {<Sonic/>}/>
 
           
         </Routes>

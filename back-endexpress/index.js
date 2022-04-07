@@ -22,7 +22,11 @@ app.use((err, req, res, next) => {
 
 app.use("*", (req, res, next) => next({ status: 404, message: "Invalid URL" }));
 
-const server = app.listen(4494, () => {
+// let server = app.listen(3000, () => console.log(`Listening on ${ 3000 }`));
+
+// const wss = new SocketServer({ server });
+
+const server = app.listen(3000, () => {
   console.log("Server succesfully started on port", server.address().port);
 });
 

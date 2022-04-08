@@ -17,13 +17,14 @@ const Search = () => {
 
     const getData = () => {
 
-        axios.get(`http://www.omdbapi.com/?i=${query}&apikey=86e6f97c`)
+        axios.get(`http://www.omdbapi.com/?s=${query}&apikey=86e6f97c`)
         .then((response) => {  
-            console.log(response.data);
-            if (Array.isArray(response.data)) {
-                setData(response.data)
+            console.log(query);
+            console.log(response.data.Search);
+            if (Array.isArray(response.data.Search)) {
+                setData(response.data.Search)
             } else {
-                setData([response.data])
+                setData([response.data.Search])
             }
 
         }) 
@@ -31,18 +32,17 @@ const Search = () => {
 
     return ( 
         <>
-            <h5>Get</h5>
+              <h5>Search</h5>
 
-            <input type="text" value={query} onChange={(e) => { setQuery(e.target.value) }} />
-            <button type="button" onClick={getData}> Click to get data</button>
+            <input type="text" placeholder= "Search term" value={query} onChange={(e) => { setQuery(e.target.value) }} />
+            <button type="button" onClick={getData}> Click to search</button>
             <br></br>
 
-
-            {
-                data.map((search, key) => {
-                    return <h2> Name: {search.Title}</h2>
-                })
-            }
+            {       
+        data.map((search, key) => {
+        return <h5> Name: {search.Title}, {search.Year} </h5>
+        })
+    }
         </> 
     );
 }

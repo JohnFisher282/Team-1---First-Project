@@ -18,7 +18,7 @@ const About = () => {
 
         <h4>The Work Process:</h4>
         <span><p>While we all had our dedicated roles, there was a large amount of help, support, and assistance spread between us over all of the above roles -
-                 this project has been an excellent learning experience and it was certainly a lot fo fun to work together in such a collabarative manner! We 
+                 this project has been an excellent learning experience and it was certainly a lot of fun to work together in such a collabarative manner! We 
                  have learned a lot about how to improve our planning and risk assessment, and hope that in future projects we will be able to utilise what we have
                  learned to improve our work!</p></span>
         
